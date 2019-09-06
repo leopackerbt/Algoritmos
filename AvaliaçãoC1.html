@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" co.ntent="ie=edge">
+    <title>Avaliação Continuada 1</title>
+</head>
+<body>
+    <!-- 1000 reais a cada 1 mes -->
+    Quanto quer guardar por mês: <input type="text" id="dmensal"> <br>
+    <button onclick="planej()">Ver planejamento</button>
+    <div id="mensagem1" style="display: none; color: blue">
+        <!-- primeira frase -->
+        Guardando <b>R$</b><b id="dinheiro_casa">X</b> por mês, conseguirá comprar a casa em <b id="meses_casa">X</b> <b>meses</b> 
+        OU <b id="anos_casa">A</b> <b>anos</b> <br>
+        <!-- segunda frase -->
+        Guardando <b>R$</b><b id="dinheiro_carro">X</b> por mês, conseguirá comprar o carro em <b id="meses_carro">X</b> <b>meses</b> 
+        OU <b id="anos_carro">A</b> <b>anos</b> <br>
+        <!-- terceira frase -->
+        Guardando <b>R$</b><b id="dinheiro_viagem">X</b> por mês, conseguirá fazer a viagem em <b id="meses_viagem">X</b> <b>meses</b> 
+        OU <b id="anos_viagem">A</b> <b>anos</b>
+    </div>
+</body>
+</html>
+
+<script>
+    // carro 20.000 - casa 300.000 - viagem 80.000
+   function planej() {
+      mensagem1.style.display = "block";
+      dinheiro_casa.innerHTML = dmensal.value;
+      dinheiro_carro.innerHTML = dmensal.value;
+      dinheiro_viagem.innerHTML = dmensal.value;
+      var mesescarro = 20000 / dmensal.value ; // ex: 20.000 / 1000 = 20 meses, pois 20 meses * 1000 = 20.000
+      var mesescasa = 300000 / dmensal.value ;
+      var mesesviagem = 80000 / dmensal.value ; 
+      var anoscarro = (mesescarro / 12).toFixed(1) ;
+      var anoscasa = (mesescasa / 12).toFixed(1) ;
+      var anosviagem = (mesesviagem / 12).toFixed(1) ;
+      meses_casa.innerHTML = Math.round(mesescasa) ;
+      meses_carro.innerHTML = Math.round(mesescarro) ;
+      meses_viagem.innerHTML = Math.round(mesesviagem) ;
+      anos_casa.innerHTML = (anoscasa);
+      anos_carro.innerHTML = (anoscarro);
+      anos_viagem.innerHTML = (anosviagem);
+
+   }
+
+</script>
